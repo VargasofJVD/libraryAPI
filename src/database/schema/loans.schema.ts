@@ -1,3 +1,38 @@
+/**
+ * Loans Schema - Manages book lending records
+ * 
+ * Core Fields:
+ * 1. Transaction Info
+ *    - id: Unique loan identifier
+ *    - bookId: Reference to borrowed book
+ *    - borrowerName/Email: Borrower details
+ * 
+ * 2. Timing Fields
+ *    - borrowedAt: Loan start date
+ *    - dueDate: Expected return date
+ *    - returnedAt: Actual return date
+ *    - createdAt/updatedAt: Record timestamps
+ * 
+ * 3. Status Fields
+ *    - isActive: Current loan status
+ *    - notes: Additional information
+ * 
+ * Relationships:
+ * - Many-to-One with Books
+ * - Many-to-One with Users
+ * 
+ * Business Rules:
+ * - One active loan per book copy
+ * - Due date must be after borrow date
+ * - Return date optional (null until returned)
+ * - Active status tracks current loans
+ * 
+ * Indexes:
+ * - Primary: id
+ * - Foreign: bookId, borrowerId
+ * - Compound: (bookId, isActive) for availability checks
+ */
+
 import { pgTable, serial, integer, varchar, text, timestamp, boolean, index } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 

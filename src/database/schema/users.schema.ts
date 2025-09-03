@@ -1,12 +1,45 @@
+/**
+ * Users Schema - Defines the database structure for user management
+ * 
+ * Schema components:
+ * 1. User Role Enum:
+ *    - admin: Full system access
+ *    - user: Standard library member access
+ * 
+ * 2. User Status Enum:
+ *    - pending: Awaiting approval
+ *    - active: Approved and active user
+ *    - suspended: Temporarily blocked user
+ * 
+ * 3. Users Table:
+ *    Core fields:
+ *    - id: Unique identifier
+ *    - email: Login credential & communications
+ *    - password: Hashed authentication credential
+ *    - firstName/lastName: Personal identification
+ *    - role: Access control level
+ *    - status: Account state
+ * 
+ * Relationships:
+ * - One-to-Many with Loans
+ * - One-to-Many with ApprovalRequests
+ * 
+ * Constraints:
+ * - Unique email
+ * - Required password (hashed)
+ * - Required name fields
+ * - Valid role and status values
+ */
+
 import { pgTable, serial, varchar, text, boolean, timestamp, pgEnum } from 'drizzle-orm/pg-core';
 
-// User role enum
+// User role enum - Controls access levels
 export const userRoleEnum = pgEnum('user_role', ['admin', 'user']);
 
-// User status enum
+// User status enum - Manages account states
 export const userStatusEnum = pgEnum('user_status', ['pending', 'active', 'suspended']);
 
-// Users table
+// Users table - Core user data structure
 export const users = pgTable('users', {
   id: serial('id').primaryKey(),
   email: varchar('email', { length: 255 }).notNull().unique(),

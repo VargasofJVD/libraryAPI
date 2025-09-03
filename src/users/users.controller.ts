@@ -1,3 +1,41 @@
+/**
+ * Users Controller - API endpoints for user management
+ * 
+ * Endpoints:
+ * 1. User Management
+ *    - POST /users - Create new user
+ *    - GET /users - List users (with filters)
+ *    - GET /users/:id - Get user details
+ *    - PATCH /users/:id - Update user
+ *    - DELETE /users/:id - Delete user
+ * 
+ * 2. User Profile
+ *    - GET /users/profile - Get current user
+ *    - PATCH /users/profile - Update profile
+ * 
+ * Security:
+ * - JWT Authentication required
+ * - Role-based access control
+ * - Admin rights for user management
+ * - Self-management for profile
+ * 
+ * Features:
+ * - Pagination and filtering
+ * - Role management
+ * - Status updates
+ * - Profile management
+ * 
+ * Swagger Documentation:
+ * @ApiTags('users')
+ * @ApiBearerAuth()
+ * 
+ * Error Responses:
+ * - 401: Unauthorized
+ * - 403: Forbidden
+ * - 404: User not found
+ * - 400: Invalid input
+ */
+
 import {
   Controller,
   Get,
@@ -20,7 +58,7 @@ import { Roles } from '../auth/decorators/roles.decorator';
 import { UserRole } from './enums/user-role.enum';
 
 @ApiTags('Users')
-@ApiBearerAuth()
+@ApiBearerAuth('JWT-auth')
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('users')
 export class UsersController {

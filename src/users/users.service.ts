@@ -1,3 +1,46 @@
+/**
+ * Users Service - Core user management business logic
+ * 
+ * Primary Responsibilities:
+ * 1. User Account Management
+ *    - Creation and updates
+ *    - Password handling
+ *    - Status management
+ *    - Role assignments
+ * 
+ * 2. Security Operations
+ *    - Password hashing (bcrypt)
+ *    - Session management
+ *    - Access control
+ * 
+ * 3. Query Operations
+ *    - User lookups
+ *    - Filtering and pagination
+ *    - Profile management
+ * 
+ * Key Features:
+ * - Secure password handling with bcrypt
+ * - Email uniqueness validation
+ * - Role-based access control
+ * - Session token management
+ * - User status transitions
+ * 
+ * Error Handling:
+ * - NotFoundException: User not found
+ * - BadRequestException: Invalid data
+ * - ConflictException: Email conflicts
+ * 
+ * Database Operations:
+ * - Uses Drizzle ORM
+ * - Transactional operations
+ * - Optimized queries
+ * 
+ * @see CreateUserDto - New user validation
+ * @see UpdateUserDto - User updates validation
+ * @see UserRole - Available roles
+ * @see UserStatus - Possible states
+ */
+
 import { Injectable, NotFoundException, BadRequestException, ConflictException } from '@nestjs/common';
 import { Inject } from '@nestjs/common';
 import { eq, and, or, like, desc, sql } from 'drizzle-orm';

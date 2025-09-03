@@ -20,7 +20,7 @@ import { Roles } from '../auth/decorators/roles.decorator';
 import { UserRole } from '../users/enums/user-role.enum';
 
 @ApiTags('Approval Requests')
-@ApiBearerAuth()
+@ApiBearerAuth('JWT-auth')
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('approval-requests')
 export class ApprovalRequestsController {

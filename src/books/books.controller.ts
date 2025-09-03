@@ -1,3 +1,41 @@
+/**
+ * Books Controller - API endpoints for book management
+ * 
+ * Endpoints:
+ * 1. Book Management
+ *    - POST /books - Add new book
+ *    - GET /books - List books (with filters)
+ *    - GET /books/:id - Get book details
+ *    - PATCH /books/:id - Update book
+ *    - DELETE /books/:id - Remove book
+ * 
+ * 2. Book Search
+ *    - GET /books/search - Search books
+ *    - GET /books/category/:id - Books by category
+ *    - GET /books/author/:id - Books by author
+ * 
+ * Query Parameters:
+ * - search: Search in title/description
+ * - category: Filter by category
+ * - author: Filter by author
+ * - available: Filter by availability
+ * - page/limit: Pagination
+ * 
+ * Features:
+ * - Advanced search capabilities
+ * - Pagination and filtering
+ * - Category/Author associations
+ * - Stock management
+ * 
+ * Swagger Documentation:
+ * @ApiTags('books')
+ * 
+ * Error Responses:
+ * - 404: Book not found
+ * - 400: Invalid input
+ * - 409: ISBN conflict
+ */
+
 import {
   Controller,
   Get,

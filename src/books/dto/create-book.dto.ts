@@ -1,3 +1,36 @@
+/**
+ * Create Book DTO - Validates book creation requests
+ * 
+ * Purpose:
+ * - Defines required structure for new book entries
+ * - Implements validation rules for book data
+ * - Provides Swagger documentation
+ * 
+ * Validation Rules:
+ * 1. Basic Info:
+ *    - Title: Required, max length
+ *    - ISBN: Required, valid format
+ *    - Description: Optional, text
+ * 
+ * 2. Publication Details:
+ *    - Year: Valid year format
+ *    - Pages: Positive integer
+ *    - Price: Positive decimal
+ * 
+ * 3. Inventory:
+ *    - Copies Available: Non-negative integer
+ *    - Total Copies: Positive integer
+ *    - Available <= Total
+ * 
+ * 4. Relationships:
+ *    - Author IDs: Non-empty array
+ *    - Category IDs: Non-empty array
+ * 
+ * Used by:
+ * @see BooksService - Book creation handling
+ * @see BooksController - API endpoint processing
+ */
+
 import { ApiProperty } from '@nestjs/swagger';
 import {
   IsString,

@@ -1,3 +1,36 @@
+/**
+ * Categories Schema - Book classification system
+ * 
+ * Core Fields:
+ * 1. Basic Info
+ *    - id: Unique identifier
+ *    - name: Category name (unique)
+ *    - description: Category details
+ * 
+ * 2. Status & Tracking
+ *    - isActive: Category availability
+ *    - createdAt/updatedAt: Timestamps
+ * 
+ * Performance Optimizations:
+ * - Index on name for fast lookups
+ * - Index on isActive for filtering
+ * 
+ * Relationships:
+ * - One-to-Many with Books
+ * - Many-to-Many through book_categories
+ * 
+ * Business Rules:
+ * - Unique category names
+ * - Categories can be deactivated
+ * - Categories can have multiple books
+ * - Books can have multiple categories
+ * 
+ * Usage:
+ * - Book classification
+ * - Search/filter functionality
+ * - Collection organization
+ */
+
 import { pgTable, serial, varchar, text, boolean, timestamp, index } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 

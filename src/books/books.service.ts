@@ -1,3 +1,47 @@
+/**
+ * Books Service - Core book management business logic
+ * 
+ * Primary Responsibilities:
+ * 1. Book Management
+ *    - Creation and updates
+ *    - Inventory tracking
+ *    - Author associations
+ *    - Category classifications
+ * 
+ * 2. Inventory Operations
+ *    - Stock level management
+ *    - Availability tracking
+ *    - Copy allocation
+ * 
+ * 3. Query Operations
+ *    - Book searches
+ *    - Filtering and sorting
+ *    - Author/category based lookups
+ *    - Inventory reports
+ * 
+ * Key Features:
+ * - Complex book searches
+ * - Inventory management
+ * - Author relationships
+ * - Category management
+ * - Loan status tracking
+ * 
+ * Dependencies:
+ * - AuthorsService: Author validation
+ * - CategoriesService: Category validation
+ * - Database: Drizzle ORM operations
+ * 
+ * Error Handling:
+ * - NotFoundException: Book not found
+ * - BadRequestException: Invalid data
+ * 
+ * Business Rules:
+ * - ISBN uniqueness
+ * - Stock level validation
+ * - Required author/category
+ * - Loan availability checks
+ */
+
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { Inject } from '@nestjs/common';
 import { eq, and, or, like, desc, sql } from 'drizzle-orm';
@@ -91,6 +135,7 @@ export class BooksService {
   }
 
   async findOne(id: number) {
+    // Check if book exists. uses async because it calls another async function
     const [book] = await this.db
       .select()
       .from(books)

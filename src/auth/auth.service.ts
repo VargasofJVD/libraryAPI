@@ -1,3 +1,43 @@
+/**
+ * Auth Service - Authentication and authorization management
+ * 
+ * Primary Responsibilities:
+ * 1. Authentication
+ *    - User login processing
+ *    - Password verification
+ *    - Token generation
+ * 
+ * 2. Authorization
+ *    - Role validation
+ *    - Permission checks
+ *    - Token verification
+ * 
+ * 3. Session Management
+ *    - JWT token handling
+ *    - Token expiration
+ *    - Session tracking
+ * 
+ * Security Features:
+ * - Secure password verification
+ * - JWT token generation
+ * - Role-based access control
+ * - Status validation
+ * 
+ * Dependencies:
+ * - UsersService: User verification
+ * - JwtService: Token operations
+ * 
+ * Error Handling:
+ * - UnauthorizedException: Invalid credentials
+ * - BadRequestException: Invalid input
+ * 
+ * Business Rules:
+ * - Active status required
+ * - Valid credentials required
+ * - Role-based permissions
+ * - Token expiration (24h)
+ */
+
 import { Injectable, UnauthorizedException, BadRequestException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service';

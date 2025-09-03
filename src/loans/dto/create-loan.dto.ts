@@ -1,3 +1,39 @@
+/**
+ * Create Loan DTO - Validates book loan requests
+ * 
+ * Purpose:
+ * - Defines structure for new book loans
+ * - Implements loan validation rules
+ * - Provides Swagger documentation
+ * 
+ * Validation Rules:
+ * 1. Book Information:
+ *    - Book ID: Required, exists
+ *    - Copy must be available
+ * 
+ * 2. Borrower Details:
+ *    - Name: Required, max length
+ *    - Email: Valid format
+ *    - User must be active
+ * 
+ * 3. Loan Period:
+ *    - Due Date: Required, future date
+ *    - Loan Duration: Within policy limits
+ * 
+ * 4. Additional Info:
+ *    - Notes: Optional
+ *    - Status tracking
+ * 
+ * Business Rules:
+ * - One active loan per book copy
+ * - User loan limit checks
+ * - Automatic availability updates
+ * 
+ * Used by:
+ * @see LoansService - Loan processing
+ * @see LoansController - API endpoints
+ */
+
 import { ApiProperty } from '@nestjs/swagger';
 import {
   IsString,

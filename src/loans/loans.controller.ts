@@ -1,3 +1,40 @@
+/**
+ * Loans Controller - API endpoints for loan management
+ * 
+ * Endpoints:
+ * 1. Loan Operations
+ *    - POST /loans - Create new loan
+ *    - GET /loans - List loans (with filters)
+ *    - GET /loans/:id - Get loan details
+ *    - PATCH /loans/:id - Update loan
+ *    - DELETE /loans/:id - Cancel loan
+ * 
+ * 2. Loan Management
+ *    - POST /loans/:id/return - Process return
+ *    - GET /loans/overdue - List overdue loans
+ *    - GET /loans/user/:id - User's loans
+ * 
+ * Query Parameters:
+ * - status: Active/Returned/Overdue
+ * - user: Filter by user
+ * - book: Filter by book
+ * - page/limit: Pagination
+ * 
+ * Features:
+ * - Loan creation and returns
+ * - Due date management
+ * - Overdue tracking
+ * - History queries
+ * 
+ * Swagger Documentation:
+ * @ApiTags('loans')
+ * 
+ * Error Responses:
+ * - 404: Loan/Book not found
+ * - 400: Invalid input/Book unavailable
+ * - 403: User loan limit exceeded
+ */
+
 import {
   Controller,
   Get,

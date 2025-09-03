@@ -1,3 +1,39 @@
+/**
+ * Books Schema - Defines the database structure for book inventory
+ * 
+ * Core Fields:
+ * 1. Identification
+ *    - id: Unique identifier
+ *    - isbn: International Standard Book Number
+ *    - title: Book title
+ * 
+ * 2. Description
+ *    - description: Book summary
+ *    - publicationYear: Year of publication
+ *    - pages: Book length
+ * 
+ * 3. Inventory Management
+ *    - price: Book cost
+ *    - copiesAvailable: Current available copies
+ *    - totalCopies: Total owned copies
+ * 
+ * Relationships:
+ * - Many-to-One with Authors
+ * - Many-to-One with Categories
+ * - One-to-Many with Loans
+ * 
+ * Indexes:
+ * - Primary: id
+ * - Unique: isbn
+ * - Foreign: authorId, categoryId
+ * 
+ * Business Rules:
+ * - ISBN must be unique
+ * - Must have at least one author and category
+ * - Available copies <= Total copies
+ * - Price and pages must be positive
+ */
+
 import { pgTable, serial, varchar, text, integer, decimal, boolean, timestamp, index, foreignKey } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 

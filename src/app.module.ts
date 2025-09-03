@@ -1,3 +1,21 @@
+/**
+ * Root module of the NestJS application.
+ * Key responsibilities:
+ * 1. Imports and configures all feature modules
+ * 2. Sets up global configuration using ConfigModule
+ * 3. Orchestrates module dependencies
+ * 
+ * Module Structure:
+ * - ConfigModule: Manages environment variables globally
+ * - DatabaseModule: Handles database connection and Drizzle ORM setup
+ * - Feature Modules: Categories, Authors, Books, Loans
+ * 
+ * Dependencies:
+ * - @nestjs/config: For environment variables
+ * - Feature modules: For domain-specific functionality
+ * - Database module: For data persistence
+ */
+
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';

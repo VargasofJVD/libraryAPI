@@ -1,3 +1,33 @@
+/**
+ * Create Category DTO - Validates category creation requests
+ * 
+ * Purpose:
+ * - Defines structure for new book categories
+ * - Implements category validation rules
+ * - Provides Swagger documentation
+ * 
+ * Validation Rules:
+ * 1. Name:
+ *    - Required field
+ *    - String validation
+ *    - Maximum length (100 chars)
+ *    - Must be unique
+ * 
+ * 2. Description:
+ *    - Optional field
+ *    - Text validation
+ *    - No length limit
+ * 
+ * Business Rules:
+ * - Categories are unique by name
+ * - Categories are active by default
+ * - Used for book classification
+ * 
+ * Used by:
+ * @see CategoriesService - Category management
+ * @see CategoriesController - API endpoints
+ */
+
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString, IsNotEmpty, IsOptional, MaxLength } from 'class-validator';
 

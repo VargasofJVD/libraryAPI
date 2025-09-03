@@ -1,3 +1,36 @@
+/**
+ * Create User DTO - Validates user creation requests
+ * 
+ * Purpose:
+ * - Defines the required data structure for creating new users
+ * - Implements validation rules for user data
+ * - Provides Swagger documentation
+ * 
+ * Validation Rules:
+ * 1. Email:
+ *    - Must be valid email format
+ *    - Required field
+ *    - Must be unique in system
+ * 
+ * 2. Password:
+ *    - Minimum length enforcement
+ *    - Complexity requirements
+ *    - Required field
+ * 
+ * 3. Personal Info:
+ *    - First and last names required
+ *    - Maximum length constraints
+ *    - String validation
+ * 
+ * 4. Role & Status:
+ *    - Must be valid enum values
+ *    - Optional with defaults
+ * 
+ * @see UserRole - Available user roles
+ * @see UserStatus - Possible user statuses
+ * @see UsersService - Service handling user creation
+ */
+
 import { ApiProperty } from '@nestjs/swagger';
 import {
   IsString,

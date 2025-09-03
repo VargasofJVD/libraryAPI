@@ -1,3 +1,38 @@
+/**
+ * Authors Schema - Book author information management
+ * 
+ * Core Fields:
+ * 1. Personal Info
+ *    - id: Unique identifier
+ *    - firstName/lastName: Author's name
+ *    - biography: Author's background
+ *    - email: Contact information
+ * 
+ * 2. Status & Tracking
+ *    - isActive: Author availability
+ *    - createdAt/updatedAt: Timestamps
+ * 
+ * Performance Optimizations:
+ * - Indexes on firstName and lastName
+ * - Compound index for full name searches
+ * - Index on email for unique constraint
+ * 
+ * Relationships:
+ * - One-to-Many with Books
+ * - Many-to-Many through book_authors
+ * 
+ * Business Rules:
+ * - Unique email addresses
+ * - Required name fields
+ * - Authors can be deactivated
+ * - Authors can have multiple books
+ * 
+ * Usage:
+ * - Author management
+ * - Book attribution
+ * - Contact information
+ */
+
 import { pgTable, serial, varchar, text, boolean, timestamp, index } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 

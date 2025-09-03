@@ -1,3 +1,46 @@
+/**
+ * Loans Service - Book lending management business logic
+ * 
+ * Primary Responsibilities:
+ * 1. Loan Operations
+ *    - Loan creation and updates
+ *    - Due date management
+ *    - Return processing
+ *    - Overdue tracking
+ * 
+ * 2. Availability Management
+ *    - Book availability checks
+ *    - Copy allocation
+ *    - Stock level updates
+ * 
+ * 3. Query Operations
+ *    - Active loans lookup
+ *    - Due date tracking
+ *    - Borrower history
+ *    - Book loan history
+ * 
+ * Key Features:
+ * - Loan period validation
+ * - Automatic due date calculation
+ * - Overdue detection
+ * - Return processing
+ * - History tracking
+ * 
+ * Dependencies:
+ * - BooksService: Book availability
+ * - Database: Drizzle ORM operations
+ * 
+ * Error Handling:
+ * - NotFoundException: Loan/Book not found
+ * - BadRequestException: Invalid loan data
+ * 
+ * Business Rules:
+ * - Book availability check
+ * - Maximum loan duration
+ * - User loan limits
+ * - Overdue penalties
+ */
+
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { Inject } from '@nestjs/common';
 import { eq, and, or, like, desc, sql } from 'drizzle-orm';

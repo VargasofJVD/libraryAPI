@@ -1,3 +1,40 @@
+/**
+ * JWT Strategy - Passport strategy for JWT authentication
+ * 
+ * Purpose:
+ * - Implements JWT validation logic
+ * - Configures JWT extraction
+ * - Validates user existence
+ * 
+ * Configuration:
+ * 1. Token Extraction:
+ *    - Bearer token from Authorization header
+ *    - Configurable JWT secret
+ *    - Token expiration check
+ * 
+ * 2. User Validation:
+ *    - Verifies user exists
+ *    - Checks user status
+ *    - Returns user for request
+ * 
+ * Security Features:
+ * - Environment-based secret
+ * - Token extraction options
+ * - User status validation
+ * - Error handling
+ * 
+ * Dependencies:
+ * - ConfigService: JWT configuration
+ * - UsersService: User validation
+ * 
+ * Error Handling:
+ * - UnauthorizedException: Invalid token/user
+ * - Error: Missing JWT_SECRET
+ * 
+ * @extends PassportStrategy
+ * @see JwtAuthGuard
+ */
+
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';

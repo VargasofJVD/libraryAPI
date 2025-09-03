@@ -1,3 +1,35 @@
+/**
+ * Auth Module - Handles authentication and authorization
+ * Key responsibilities:
+ * 1. User authentication (login/logout)
+ * 2. JWT token management
+ * 3. Role-based authorization
+ * 4. Security strategy implementation
+ * 
+ * Features:
+ * - JWT-based authentication
+ * - Role-based guards
+ * - Custom decorators for role checks
+ * - Passport.js integration
+ * 
+ * Security measures:
+ * - Token expiration (24h)
+ * - Role validation
+ * - Protected routes
+ * - JWT secret management
+ * 
+ * Components:
+ * - AuthService: Authentication business logic
+ * - AuthController: Auth endpoints
+ * - JwtStrategy: JWT implementation
+ * - Guards: Role and JWT validation
+ * 
+ * Dependencies:
+ * - UsersModule: For user verification
+ * - @nestjs/jwt: JWT functionality
+ * - @nestjs/passport: Authentication strategies
+ */
+
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
