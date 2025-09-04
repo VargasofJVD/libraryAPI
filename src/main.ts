@@ -64,6 +64,7 @@ async function bootstrap() {
     .addTag('auth', 'Authentication operations')
     .addTag('users', 'User management operations')
     .addTag('approval-requests', 'Approval request operations')
+    .addTag('queue', 'Queue management and monitoring operations')
     .build();
   
   const document = SwaggerModule.createDocument(app, config);

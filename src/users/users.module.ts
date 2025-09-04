@@ -28,9 +28,10 @@ import { UsersService } from './users.service';
 import { UsersController } from './users.controller';
 import { DatabaseModule } from '../database/database.module';
 import { ApprovalRequestsModule } from '../approval-requests/approval-requests.module';
+import { QueueModule } from '../queue/queue.module';
 
 @Module({
-  imports: [DatabaseModule, ApprovalRequestsModule],
+  imports: [DatabaseModule, ApprovalRequestsModule, QueueModule],
   controllers: [UsersController],
   providers: [UsersService],
   exports: [UsersService],

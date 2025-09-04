@@ -28,6 +28,7 @@ import { LoansModule } from './loans/loans.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { ApprovalRequestsModule } from './approval-requests/approval-requests.module';
+import { QueueModule } from './queue/queue.module';
 
 @Module({
   imports: [
@@ -42,6 +43,7 @@ import { ApprovalRequestsModule } from './approval-requests/approval-requests.mo
     AuthModule,
     UsersModule,
     ApprovalRequestsModule,
+    QueueModule,
   ],
   controllers: [AppController],
   providers: [AppService],

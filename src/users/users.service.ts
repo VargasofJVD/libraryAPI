@@ -48,6 +48,7 @@ import { users, userSessions } from '../database/schema';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { DATABASE_CONNECTION } from '../database/database.module';
+import { QueueService } from '../queue/queue.service';
 import { UserRole } from './enums/user-role.enum';
 import { UserStatus } from './enums/user-status.enum';
 import * as bcrypt from 'bcrypt';
@@ -57,6 +58,7 @@ import * as crypto from 'crypto';
 export class UsersService {
   constructor(
     @Inject(DATABASE_CONNECTION) private readonly dbConnection: { db: any; client: any },
+    private readonly queueService: QueueService,
   ) {}
 
   private get db() {
@@ -101,6 +103,20 @@ export class UsersService {
         .where(eq(users.id, user.id));
       
       user.authToken = authToken;
+    }
+
+    // Queue welcome email notification
+    try {
+      await this.queueService.sendWelcomeEmail({
+        userId: user.id,
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        authToken: user.authToken || '',
+      });
+    } catch (error) {
+      // Log error but don't fail user creation
+      console.error('Failed to queue welcome email:', error);
     }
 
     return user;
@@ -256,6 +272,19 @@ export class UsersService {
       .where(eq(users.id, id))
       .returning();
 
+    // Queue account status notification
+    try {
+      await this.queueService.sendAccountStatusNotification({
+        userId: updatedUser.id,
+        userEmail: updatedUser.email,
+        userName: `${updatedUser.firstName} ${updatedUser.lastName}`,
+        status: 'activated',
+        reason: 'Account has been activated by admin',
+      });
+    } catch (error) {
+      console.error('Failed to queue account status notification:', error);
+    }
+
     return updatedUser;
   }
 
@@ -274,6 +303,19 @@ export class UsersService {
       })
       .where(eq(users.id, id))
       .returning();
+
+    // Queue account status notification
+    try {
+      await this.queueService.sendAccountStatusNotification({
+        userId: updatedUser.id,
+        userEmail: updatedUser.email,
+        userName: `${updatedUser.firstName} ${updatedUser.lastName}`,
+        status: 'suspended',
+        reason: 'Account has been suspended by admin',
+      });
+    } catch (error) {
+      console.error('Failed to queue account status notification:', error);
+    }
 
     return updatedUser;
   }
