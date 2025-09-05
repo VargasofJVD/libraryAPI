@@ -56,9 +56,12 @@ export class QueueService {
   private readonly logger = new Logger(QueueService.name);
 
   constructor(
-    @InjectQueue('notifications') private notificationQueue: Queue<NotificationJob>,
-    @InjectQueue('approvals') private approvalQueue: Queue<ApprovalJob>,
-    @InjectQueue('maintenance') private maintenanceQueue: Queue<any>,
+    //these are private properties that are injected into the class.
+    //injects a queue, assigns it a private property (notificationQueue, approvalQueue, maintenanceQueue), and assigns it a type (Queue<NotificationJob>, Queue<ApprovalJob>, Queue<any>)
+    //NB: the types are the types of the jobs that will be processed by the queue... and in this case, the jobs are the NotificationJob, ApprovalJob, and any other job that is processed by the queue.
+    @InjectQueue('notifications') private notificationQueue: Queue<NotificationJob>, //this property will be used to access the notification queue.
+    @InjectQueue('approvals') private approvalQueue: Queue<ApprovalJob>, //this property will be used to access the approval queue.
+    @InjectQueue('maintenance') private maintenanceQueue: Queue<any>, //this property will be used to access the maintenance queue.
   ) {
     // Test Redis connection on startup
     this.testRedisConnection();
