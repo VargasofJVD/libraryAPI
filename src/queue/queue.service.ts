@@ -82,7 +82,7 @@ export class QueueService {
   }
 
   // ==================== NOTIFICATION QUEUE METHODS ====================
-
+//Continue documenting this code from here on...
   /**
    * Send welcome email to new user
    */
